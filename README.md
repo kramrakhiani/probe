@@ -8,23 +8,23 @@ A simulation-based autonomous control system demonstrating **adaptive intelligen
 ┌──────────────────────────────────────────────────────────────────────┐
 │                        PROBE System                                  │
 │                                                                      │
-│  ┌─────────────┐    ┌──────────────┐    ┌───────────────────┐       │
+│  ┌──────────────┐    ┌──────────────┐    ┌───────────────────┐       │
 │  │ Environment  │───▶│ Self-Monitor │───▶│  Fault Handler    │       │
 │  │ (Inverted    │    │ (Uncertainty │    │  (NORMAL/FALLBACK │       │
 │  │  Pendulum)   │    │  + Z-score)  │    │   /EMERGENCY)     │       │
 │  └──────┬───────┘    └──────────────┘    └─────────┬─────────┘       │
 │         │                                          │                 │
 │         ▼                                          ▼                 │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐       │
-│  │ PID Controller│──▶│     (+)      │◀──│ Lyapunov         │       │
-│  │ (Baseline)   │    │  u_pid+u_nn  │    │ Projection       │       │
-│  └──────────────┘    └──────┬───────┘    │ (Stability       │       │
-│                             │            │  Guarantee)       │       │
-│  ┌──────────────┐           │            └────────┬─────────┘       │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐        │
+│  │PID Controller│ ──▶│     (+)      │◀── │    Lyapunov      │        │
+│  │ (Baseline)   │    │  u_pid+u_nn  │    │    Projection    │        │
+│  └──────────────┘    └──────┬───────┘    │    (Stability    │        │
+│                             │            │     Guarantee)   │        │
+│  ┌──────────────┐           │            └────────┬─────────┘        │
 │  │ Learning     │           │                     │                  │
-│  │ Module       │───────────────────────────────▶│                  │
-│  │ (Residual NN)│           │                                       │
-│  └──────────────┘           ▼                                       │
+│  │ Module       │───────────────────────────────▶ │                  │
+│  │ (Residual NN)│           │                                        │
+│  └──────────────┘           ▼                                        │
 │                    ┌──────────────┐                                  │
 │                    │ Resource Mgr │                                  │
 │                    │ (Power/      │                                  │
@@ -83,8 +83,6 @@ python experiments/plotting.py
 13. **Adv_Sensor_Corruption**: Massive sensor spikes (+5.0 deviation)
 14. **Adv_Worst_Case**: Combined delay, heavy noise, high wind, and saturation limits
 ## Mathematical Foundation
-
-See [implementation_plan.md](implementation_plan.md) and [walkthrough.md](walkthrough.md) for detailed mathematical justification of:
 - Lyapunov stability constraint derivation
 - Closed-form admissible control bound with empty intersection handling
 - Actuator-aware saturation limits during projection
