@@ -1,0 +1,29 @@
+{
+  "A_Weak_LQR": {
+    "r_lqr": 1.0,
+    "use_nn": false,
+    "use_stability_constraint": false,
+    "alpha": 0.01,
+    "lambda_eff": 0.0001,
+    "nn_clamp": 1.5,
+    "force_limit": 5.0
+  },
+  "A_Strong_LQR": {
+    "r_lqr": 0.01,
+    "use_nn": false,
+    "use_stability_constraint": false,
+    "alpha": 0.01,
+    "lambda_eff": 0.0001,
+    "nn_clamp": 1.5,
+    "force_limit": 5.0
+  },
+  "D_Full_PROBE": {
+    "r_lqr": 1.0,
+    "use_nn": true,
+    "use_stability_constraint": true,
+    "alpha": 0.01,
+    "lambda_eff": 0.0001,
+    "nn_clamp": 1.5,
+    "force_limit": 5.0
+  }
+}
